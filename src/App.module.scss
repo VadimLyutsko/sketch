@@ -20,13 +20,13 @@
 .icon {
   width: 100px;
   height: 100px;
-  color: #96B3D3;
+  color: #96b3d3;
 }
 
 .button {
   position: relative;
-  background-color: rgba($color: hotpink, $alpha: .75);
-  border: 1px solid rgba($color: white, $alpha: .25);
+  background-color: rgba($color: hotpink, $alpha: 0.75);
+  border: 1px solid rgba($color: white, $alpha: 0.25);
   border-radius: 4em;
   font-size: 32px;
   color: white;
@@ -46,7 +46,7 @@
   }
 
   &:after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     border-radius: 4em;
@@ -73,7 +73,3 @@
     top: 1px;
   }
 }
-
-
-
-
