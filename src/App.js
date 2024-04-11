@@ -1,5 +1,4 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faSortDown} from '@fortawesome/free-solid-svg-icons'
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fas} from '@fortawesome/free-solid-svg-icons';
 import styles from './App.module.scss'
@@ -8,23 +7,21 @@ import {useState} from 'react';
 library.add(fas);
 
 function App() {
-
-
     const [value, setValue] = useState('home')
+// Добавим начальную картинку
 
-    let iconsNameArray = [faSortDown]
+    let iconsNameArray, randomIndex, randomIcon, result;
 
-    let randomIndex = Math.floor(Math.random() * iconsNameArray.length);
-    let randomIcon = iconsNameArray[randomIndex];
-    let result = [];
-    const handler = () => {
+    const nameCalculate = () => {
         iconsNameArray = Object.keys(fas).map((iconName) => {
             return iconName
         })
         randomIndex = Math.floor(Math.random() * iconsNameArray.length);
         randomIcon = iconsNameArray[randomIndex];
-        result = []
 
+// на 24 сбрасываем значение, чтобы пушить в чистый массив, а не удлинять название иконки
+        result = []
+// в цикле меняем имя из библиотеки с верблюжьего на дефисный (кебабный?)
         for (let i = 0; i < randomIcon.length; i++) {
             const element = randomIcon[i];
             if (element !== element.toUpperCase()) {
@@ -34,18 +31,21 @@ function App() {
                 result.push(element.toLowerCase())
             }
         }
+
         setValue(result.join(''))
     }
-
-    const deb = () => {
+// задержка в 3 секунды
+    const delayHandler = () => {
         setTimeout(() => {
-            handler()
-        }, 1000);
+            nameCalculate()
+        }, 3000);
     }
 
     return (
         <div className={styles.container}>
-            <button onClick={deb} className={styles.button}>click me!</button>
+            <button onClick={delayHandler} className={styles.button}>
+                click me!
+            </button>
             <FontAwesomeIcon icon={`${value}`} className={styles.icon}/>
         </div>
     );
